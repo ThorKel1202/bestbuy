@@ -1,6 +1,6 @@
+import sys
 import products
 import store
-import sys
 
 
 def list_products(best_buy: store.Store) -> None:
@@ -75,7 +75,7 @@ def make_order(best_buy: store.Store) -> None:
     except ValueError:
         print("Invalid input!")
     
-    except Exception:
+    except RuntimeError:
         print("Order failed.")
 
 
