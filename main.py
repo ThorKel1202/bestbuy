@@ -1,5 +1,6 @@
 import products
 import store
+import sys
 
 
 def list_products(best_buy: store.Store) -> None:
@@ -70,15 +71,20 @@ def make_order(best_buy: store.Store) -> None:
         total_price = best_buy.order(shopping_list)
         print("********")
         print(f"Order made! Total payment: ${total_price}")
-    except Exception as e:
-        print(f"Order failed: {e}")
+        
+    except ValueError:
+        print("Invalid input!")
+    
+    except Exception:
+        print("Order failed.")
 
 
 def quit_program(_: store.Store) -> None:
     """
         Function ends the application.
-    """
-    exit()
+        """
+    
+    sys.exit()
     
 
 def start(best_buy: store.Store) -> None:
