@@ -113,6 +113,9 @@ def start(best_buy: store.Store) -> None:
     
 
 def main() -> None:
+    """
+        Function initializes the store and start the application.
+    """
     product_list = [
         products.Product("MacBook Air M2", price=1450, quantity=100),
         products.Product("Bose QuietComfort Earbuds", price=250, quantity=500),
