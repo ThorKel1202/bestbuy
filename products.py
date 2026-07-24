@@ -3,11 +3,11 @@ class Product:
         
         # Validate the input
         if not name:
-            raise ValueError("Name darf nicht leer sein.")
+            raise ValueError("Name can not be empty!")
         if price < 0:
-            raise ValueError("Preis darf nicht negativ sein.")
+            raise ValueError("Price can not be negative!")
         if quantity < 0:
-            raise ValueError("Menge darf nicht negativ sein.")
+            raise ValueError("Quantity can not be negative!")
         
         # Create the instance
         self.name = name
@@ -20,7 +20,7 @@ class Product:
     
     def set_quantity(self, quantity):
         if quantity < 0:
-            raise ValueError("Menge darf nicht negativ sein.")
+            raise ValueError("Quantity must be positive!")
         
         self.quantity = quantity
         
@@ -38,17 +38,17 @@ class Product:
         self.active = False
     
     def show(self):
-        print(f"{self.name}, Price: {self.price}, Quantity: {self.quantity}")
+        print(f"{self.name}, Price: ${self.price}, Quantity: {self.quantity}")
     
     def buy(self, quantity) -> float:
         if quantity <= 0:
-            raise ValueError("Kaufmenge muss größer als 0 sein.")
+            raise ValueError("Amount must be more than 0 (zero)!")
         
         if not self.active:
-            raise Exception("Produkt ist nicht aktiv.")
+            raise Exception("Product is not active!")
         
         if quantity > self.quantity:
-            raise Exception("Nicht genügend Bestand vorhanden.")
+            raise Exception("Insufficient stock available!")
         
         # Reduce quantity after buy
         self.quantity -= quantity
@@ -59,23 +59,4 @@ class Product:
         
         # Total payment
         return quantity * self.price
-    
-def main():
-    
-    bose = Product("Bose QuietComfort Earbuds", price=250, quantity=500)
-    mac = Product("MacBook Air M2", price=1450, quantity=100)
-
-    print(bose.buy(50))
-    print(mac.buy(100))
-    print(mac.is_active())
-
-    bose.show()
-    mac.show()
-
-    bose.set_quantity(1000)
-    bose.show()
-    
-if __name__ == "__main__":
-    main()
-    
     
